@@ -1,0 +1,121 @@
+# Begin NKOD Schema
+
+type: object
+
+required:
+  - title
+  - notes
+  - frequency
+  - ruian_type
+  - ruian_code
+  - tags
+  - publisher_uri
+  - publisher_name
+  - resources
+
+properties:
+  title:
+    type: string
+
+  notes:
+    type: string
+
+  frequency:
+    type: string
+    format: interval
+
+  # TODO: Add better RUIAN validation.
+  ruian_type:
+    type: string
+
+  ruian_code:
+    type: string
+
+  # TODO: List of URLs separated by commas. Invent a new format?
+  theme:
+    type: string
+    pattern: '://'
+
+  maintainer_email:
+    type: string
+    format: email
+
+  maintainer:
+    type: string
+
+  schema:
+    type: string
+    format: uri
+
+  temporal_start:
+    type: string
+    format: date
+
+  temporal_end:
+    type: string
+    format: date
+
+  publisher_uri:
+    type: string
+    format: uri
+
+  publisher_name:
+    type: string
+
+  tags:
+    type: array
+    items:
+      type: object
+
+      required:
+        - name
+        - display_name
+
+      properties:
+        name:
+          type: string
+
+        display_name:
+          type: string
+
+  resources:
+    type: array
+    items:
+      type: object
+
+      required:
+        - url
+        - format
+        - license_link
+
+      properties:
+        url:
+          type: string
+          format: uri
+
+        format:
+          type: string
+
+        license_link:
+          type: string
+          format: url
+
+        name:
+          type: string
+
+        describedBy:
+          type: string
+          format: uri
+
+        describedByType:
+          type: string
+
+        temporal_start:
+          type: string
+          format: date
+
+        temporal_end:
+          type: string
+          format: date
+
+# EOF
